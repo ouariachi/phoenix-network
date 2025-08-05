@@ -1,26 +1,28 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: #070712;
+  --color-foreground: rgb(255, 255, 255);
+  --color-primary: #FC4928;
+  --color-secondary: #FF9029;
+  
+  --font-glash-grotesk: 'Clash Grotesk', sans-serif;
+  
+  --animate-zoom-fade-in: zoomFadeIn 1s ease-in-out;
+  --animate-fade-in-translate-up: fadeInTranslateUp 1s ease-in-out forwards;
+  --animate-fade-in-translate-up-2: fadeInTranslateUp 1s ease-in-out 1s forwards;
+  --animate-fade-in-translate-up-3: fadeInTranslateUp 1s ease-in-out 2s forwards;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
