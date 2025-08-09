@@ -1,5 +1,6 @@
 "use client";
 
+import { Users } from "lucide-react";
 import Image from "next/image";
 import type { JavaStatusResponse } from "node-mcstatus";
 import { useEffect, useState } from "react";
@@ -56,17 +57,17 @@ export const ServerStatusClient = ({ status }: Props) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setStepCount((prev) => prev + 1);
-      setActualStep((prev) => {
-        const nextStep = STEPS.find((step) => step.key === prev.key);
-        if (!nextStep) return prev;
-        return nextStep;
-      });
-    }, 3000);
+    }, 6000);
+
+    console.log(status)
 
     return () => clearInterval(interval);
   }, [totalSteps]);
 
-  console.log("Server Status:", status);
+  useEffect(() => {
+    const currentStepIndex = stepCount % totalSteps;
+    setActualStep(STEPS[currentStepIndex]);
+  }, [stepCount, totalSteps]);
 
   return (
     <section className="relative min-h-[100dvh] flex items-center">
@@ -116,15 +117,37 @@ export const ServerStatusClient = ({ status }: Props) => {
             Prueba nuestras modalidades
           </h1>
 
-          <h2
-            className="
-              text-lg sm:text-xl md:text-3xl font-bold italic text-pretty
-              bg-gradient-to-r from-primary to-secondary w-fit px-3 py-1 rounded-full
-              text-background
-            "
-          >
-            {actualStep.title}
-          </h2>
+          <div className="flex items-center gap-2">
+            <h2
+              className="
+                text-lg sm:text-xl md:text-3xl font-bold italic text-pretty
+                bg-gradient-to-r from-primary to-secondary w-fit px-3 py-1 rounded-full
+                text-background
+              "
+            >
+              {actualStep.title}
+            </h2>
+
+            <span
+              className="text-lg sm:text-xl md:text-3xl font-bold italic text-pretty"
+              style={{ color: status[actualStep.key as keyof typeof status].online ? "green" : "red" }}
+            >
+              · {status[actualStep.key as keyof typeof status].online ? " Abierto" : " Cerrado"}
+            </span>
+          </div>
+
+          <p className="prose prose-invert text-2xl pl-1 mt-3 font-semibold italic">
+            {actualStep.description}
+          </p>
+
+          <div className="flex items-center gap-2 mt-10">
+            <div className="flex items-center gap-4 text-lg sm:text-xl md:text-2xl font-semibold">
+              <div className="bg-gradient-to-br from-primary/60 to-secondary/60 rounded-full p-2">
+                <Users className="w-8 h-8" />
+              </div>
+              {status[actualStep.key as keyof typeof status].players?.online ?? 0} / {status[actualStep.key as keyof typeof status].players?.max ?? 0}
+            </div>
+          </div>
         </div>
       </div>
     </section>
