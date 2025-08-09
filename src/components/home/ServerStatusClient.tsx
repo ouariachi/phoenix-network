@@ -1,5 +1,6 @@
 "use client";
 
+import { useWindowSize } from "hamo";
 import { Users } from "lucide-react";
 import Image from "next/image";
 import type { JavaStatusResponse } from "node-mcstatus";
@@ -53,6 +54,7 @@ export const ServerStatusClient = ({ status }: Props) => {
   const gapDegrees = 360 / totalSteps;
   const [stepCount, setStepCount] = useState(0);
   const [actualStep, setActualStep] = useState<typeof STEPS[number]>(STEPS[0]);
+  const { width: windowWidth } = useWindowSize();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -62,7 +64,7 @@ export const ServerStatusClient = ({ status }: Props) => {
     console.log(status)
 
     return () => clearInterval(interval);
-  }, [totalSteps]);
+  }, [totalSteps, status]);
 
   useEffect(() => {
     const currentStepIndex = stepCount % totalSteps;
@@ -70,14 +72,23 @@ export const ServerStatusClient = ({ status }: Props) => {
   }, [stepCount, totalSteps]);
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center">
-      <div className="flex items-start justify-between gap-10 w-full px-20">
+    <section className="relative min-h-[100dvh] flex items-center pb-30 xl:pb-0">
+      <div
+        className="
+          flex items-start justify-between gap-10 w-full px-5 xl:px-20
+          flex-col xl:flex-row
+        "
+      >
         <div
           className="
-            relative w-[500px] aspect-square rounded-full border-4 border-white duration-800
-            bg-gradient-to-br from-primary/20 to-secondary/20
+            w-full h-[1px] border-2 border-white
+            flex items-center justify-between mb-10 xl:mb-0
+            xl:relative xl:w-[500px] xl:h-auto xl:aspect-square xl:rounded-full xl:border-4 xl:duration-800
+            xl:bg-gradient-to-br xl:from-primary/20 xl:to-secondary/20
           "
-          style={{ transform: `rotate(${(stepCount * gapDegrees) % (360 * 100)}deg)` }} // Delays backward rotation by allowing 100 full rotations before resetting to 0
+          style={windowWidth && windowWidth < 1280 ? {} : {
+            transform: `rotate(${(stepCount * gapDegrees) % (360 * 100)}deg)`
+          }}
         >
           {STEPS.map((step, i) => {
             const angle = i * gapDegrees - 90;
@@ -88,12 +99,15 @@ export const ServerStatusClient = ({ status }: Props) => {
             return (
               <div
                 key={step.key}
-                className="absolute flex flex-col items-center"
+                className="
+                  transition-all duration-300 ease-in-out
+                  w-[50px] sm:w-[60px] xl:w-[100px] aspect-square
+                  xl:absolute xl:-translate-1/2 
+                "
                 style={{
+                  scale: actualStep.key === step.key ? 1.2 : 1,
                   top: `calc(50% + ${y}px)`,
                   left: `calc(50% + ${x}px)`,
-                  transform: "translate(-50%, -50%)",
-                  width: "100px",
                 }}
               >
                 <Image
@@ -101,9 +115,9 @@ export const ServerStatusClient = ({ status }: Props) => {
                   alt={step.title}
                   width={100}
                   height={100}
-                  className="w-20 h-20 rounded-full object-cover border-2 border-white pointer-events-none select-none transition-transform duration-800"
+                  className="w-full h-full rounded-full object-cover border-2 border-white pointer-events-none select-none transition-transform duration-800"
                   draggable={false}
-                  style={{
+                  style={windowWidth && windowWidth < 1280 ? {} : {
                     transform: `rotate(-${(stepCount * gapDegrees) % (360 * 100)}deg)`,
                   }}
                 />
@@ -113,7 +127,7 @@ export const ServerStatusClient = ({ status }: Props) => {
         </div>
 
         <div className="flex-1">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 xl:mb-20">
             Prueba nuestras modalidades
           </h1>
 
@@ -150,6 +164,6 @@ export const ServerStatusClient = ({ status }: Props) => {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   )
 }

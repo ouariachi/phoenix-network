@@ -85,8 +85,8 @@ export const Hero = () => {
         />
       </div>
 
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between w-7xl max-w-[99dvw] mx-auto z-10">
-        <div className="flex flex-col items-center lg:items-start lg:mt-15">
+      <div className="flex flex-col-reverse xl:flex-row items-center justify-between w-7xl max-w-[99dvw] mx-auto z-10">
+        <div className="flex flex-col items-center xl:items-start xl:mt-15">
           <h1 className="split-text text-3xl sm:text-5xl md:text-7xl font-bold italic">
             Phoenix Network - —
           </h1>
@@ -137,7 +137,7 @@ export const Hero = () => {
             width={500}
             height={500}
             alt="Phoenix Network"
-            className="w-auto lg:w-[500px] max-w-[95dvw] max-h-[250px] lg:max-h-none lg:h-auto"
+            className="w-auto xl:w-[500px] max-w-[95dvw] max-h-[250px] xl:max-h-none xl:h-auto"
           />
         </div>
       </div>
