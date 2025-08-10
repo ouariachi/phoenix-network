@@ -105,7 +105,7 @@ export const ServerStatusClient = ({ status }: Props) => {
                   xl:absolute xl:-translate-1/2 
                 "
                 style={{
-                  scale: actualStep.key === step.key ? 1.2 : 1,
+                  scale: windowWidth && windowWidth < 1280 && actualStep.key === step.key ? 1.3 : 1,
                   top: `calc(50% + ${y}px)`,
                   left: `calc(50% + ${x}px)`,
                 }}
