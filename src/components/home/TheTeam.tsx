@@ -9,7 +9,7 @@ const ROLES = {
   Founder: { color: "#a14fcd", label: "Founder" },
   Owner: { color: "#f24e1e", label: "Owner" },
   Admin: { color: "#3b1ef2", label: "Admin" },
-  Developer: { color: "#1e9af2", label: "Developer" },
+  Developer: { color: "#1e9af2", label: "Programador" },
   Designer: { color: "#29c78d", label: "Designer" },
   Moderator: { color: "#d8426e", label: "Moderator" },
   Manager: { color: "#f2c12e", label: "Manager" },
@@ -17,19 +17,18 @@ const ROLES = {
 
 const TEAM_MEMBERS = [
   {
-    name: "Member 1",
-    roles: [ROLES.Founder, ROLES.Owner],
-    model: "/model.gltf",
+    name: "TheepicGAB96",
+    roles: [ROLES.Owner, ROLES.Developer],
+    model: "/TheepicGAB96.gltf",
     colorA: "#a14fcd",
-    colorB: "#3e92cc",
+    quote: "No limites tus desafíos, desafía tus límites.",
     index: 0,
   },
   {
-    name: "Member 2",
+    name: "SusurroYT",
     roles: [ROLES.Founder, ROLES.Owner],
-    model: "/model-2.gltf",
+    model: "/susurroyt.gltf",
     colorA: "#f24e1e",
-    colorB: "#1e9af2",
     index: 1,
   },
   {
@@ -37,7 +36,6 @@ const TEAM_MEMBERS = [
     roles: [ROLES.Founder, ROLES.Owner],
     model: "/model-3.gltf",
     colorA: "#29c78d",
-    colorB: "#d8426e",
     index: 2,
   },
   {
@@ -45,7 +43,6 @@ const TEAM_MEMBERS = [
     roles: [ROLES.Founder, ROLES.Owner],
     model: "/model-4.gltf",
     colorA: "#f2c12e",
-    colorB: "#3b1ef2",
     index: 3,
   },
   {
@@ -53,7 +50,6 @@ const TEAM_MEMBERS = [
     roles: [ROLES.Founder, ROLES.Owner],
     model: "/model-5.gltf",
     colorA: "#5e3fc1",
-    colorB: "#cc4f1e",
     index: 4,
   },
 ];
@@ -86,7 +82,7 @@ export const TheTeam = () => {
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
 
     return () => {
@@ -225,6 +221,9 @@ export const TheTeam = () => {
         <h2 className="text-3xl font-bold">
           {TEAM_MEMBERS[currentMemberIndex].name}
         </h2>
+        <p className="text-lg mt-2 italic font-semibold">
+          &quot;{TEAM_MEMBERS[currentMemberIndex].quote}&quot;
+        </p>
         <div className="flex justify-center gap-2 mt-2">
           {TEAM_MEMBERS[currentMemberIndex].roles.map((role, idx) => (
             <span
