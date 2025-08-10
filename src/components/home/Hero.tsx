@@ -85,7 +85,12 @@ export const Hero = () => {
         />
       </div>
 
-      <div className="flex flex-col-reverse xl:flex-row items-center justify-between w-7xl max-w-[99dvw] mx-auto z-10">
+      <div
+        className="
+          flex flex-col-reverse xl:flex-row items-center w-7xl max-w-[99dvw] mx-auto z-10
+          h-[100dvh] justify-center xl:justify-between xl:h-auto
+        "
+      >
         <div className="flex flex-col items-center xl:items-start xl:mt-15">
           <h1 className="split-text text-3xl sm:text-5xl md:text-7xl font-bold italic">
             Phoenix Network - —

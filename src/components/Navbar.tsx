@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Discord } from "./icons/Discord"
 import Link from "next/link"
+import MainMenu from "./MainMenu"
 
 export const Navbar = () => {
   const NAV_ITEMS = [
@@ -13,23 +14,25 @@ export const Navbar = () => {
       href: "https://shop.phoenixnetwork.us"
     },
     {
-      name: "Kits y Rangos",
-      href: "/kits"
+      name: "Foro",
+      href: "/foro"
     }
   ]
 
   return (
     <nav className="flex justify-between items-center mx-auto mt-3 px-10">
       <div className="flex items-center gap-10">
-        <Image
-          src="/logo_transparent.png"
-          width={60}
-          height={60}
-          alt="Phoenix Network Logo"
-          className="h-15 w-15"
-        />
+        <div className="hidden md:block">
+          <Image
+            src="/logo_transparent.png"
+            width={60}
+            height={60}
+            alt="Phoenix Network Logo"
+            className="h-15 w-15"
+          />
+        </div>
 
-        <ul className="flex items-center gap-4 font-medium text-lg">
+        <ul className="items-center gap-4 font-medium text-lg hidden md:flex">
           {NAV_ITEMS.map(({ name, href }) => (
             <li key={name} className="text-foreground/80 hover:text-foreground transition-all duration-300 cursor-pointer">
               <Link href={href}>{name}</Link>
@@ -46,6 +49,12 @@ export const Navbar = () => {
           <Discord className="w-6 h-6" />
           Discord
         </a>
+      </div>
+
+      <div className="md:hidden">
+        <div className="fixed top-4 right-5 z-20 transition-all">
+          <MainMenu links={NAV_ITEMS} />
+        </div>
       </div>
     </nav>
   )

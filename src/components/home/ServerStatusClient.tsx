@@ -150,7 +150,7 @@ export const ServerStatusClient = ({ status }: Props) => {
             </span>
           </div>
 
-          <p className="prose prose-invert text-2xl pl-1 mt-3 font-semibold italic">
+          <p className="prose prose-invert text-xl xl:text-2xl pl-1 mt-3 font-semibold italic">
             {actualStep.description}
           </p>
 
