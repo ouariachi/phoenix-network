@@ -188,10 +188,11 @@ export const TheTeam = () => {
       />
 
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none opacity-50"
+        className="
+          absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none opacity-50
+          w-[600px] aspect-square max-w-[100dvw]
+        "
         style={{
-          width: "600px",
-          height: "600px",
           filter: "blur(80px)",
           transition: "background 0.5s ease",
           zIndex: -1,
