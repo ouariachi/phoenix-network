@@ -32,10 +32,11 @@ const TEAM_MEMBERS = [
     index: 1,
   },
   {
-    name: "Member 3",
-    roles: [ROLES.Founder, ROLES.Owner],
-    model: "/model-3.gltf",
+    name: "Braktu",
+    roles: [ROLES.Manager],
+    model: "/Braktu.gltf",
     colorA: "#29c78d",
+    quote: "No preguntes el '¿Porqué?' si no un '¿Porqué no?'",
     index: 2,
   },
   {
