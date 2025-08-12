@@ -6,30 +6,40 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 const ROLES = {
-  Founder: { color: "#a14fcd", label: "Founder" },
+  Founder: { color: "#cdb64fff", label: "Founder" },
   Owner: { color: "#f24e1e", label: "Owner" },
   Admin: { color: "#3b1ef2", label: "Admin" },
   Developer: { color: "#1e9af2", label: "Programador" },
   Designer: { color: "#29c78d", label: "Designer" },
   Moderator: { color: "#d8426e", label: "Moderator" },
-  Manager: { color: "#f2c12e", label: "Manager" },
+  Manager: { color: "#892ef2ff", label: "Manager" },
+  Builder: { color: "#09970b", label: "Builder" },
 };
 
 const TEAM_MEMBERS = [
+  {
+    name: "RiduanCastro",
+    roles: [ROLES.Founder, ROLES.Owner, ROLES.Builder],
+    model: "/Riduan.gltf",
+    colorA: "#a14fcd",
+    quote: "No importa de dónde vengas, sino a dónde quieres llegar.",
+    index: 0,
+  },
   {
     name: "TheepicGAB96",
     roles: [ROLES.Owner, ROLES.Developer],
     model: "/TheepicGAB96.gltf",
     colorA: "#a14fcd",
     quote: "No limites tus desafíos, desafía tus límites.",
-    index: 0,
+    index: 1,
   },
   {
     name: "SusurroYT",
     roles: [ROLES.Founder, ROLES.Owner],
     model: "/susurroyt.gltf",
     colorA: "#f24e1e",
-    index: 1,
+    quote: "Where is Lore?",
+    index: 2,
   },
   {
     name: "Braktu",
@@ -37,21 +47,7 @@ const TEAM_MEMBERS = [
     model: "/Braktu.gltf",
     colorA: "#29c78d",
     quote: "No preguntes el '¿Porqué?' si no un '¿Porqué no?'",
-    index: 2,
-  },
-  {
-    name: "Member 4",
-    roles: [ROLES.Founder, ROLES.Owner],
-    model: "/model-4.gltf",
-    colorA: "#f2c12e",
     index: 3,
-  },
-  {
-    name: "Member 5",
-    roles: [ROLES.Founder, ROLES.Owner],
-    model: "/model-5.gltf",
-    colorA: "#5e3fc1",
-    index: 4,
   },
 ];
 
