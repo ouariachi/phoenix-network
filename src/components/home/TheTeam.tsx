@@ -38,7 +38,7 @@ const TEAM_MEMBERS = [
     roles: [ROLES.Founder, ROLES.Owner],
     model: "/susurroyt.gltf",
     colorA: "#f24e1e",
-    quote: "Where is Lore?",
+    quote: "Cada esfuerzo cuenta, incluso cuando nadie lo ve.",
     index: 2,
   },
   {
