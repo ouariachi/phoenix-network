@@ -1,3 +1,5 @@
+"use client";
+
 import { cn, debounce } from '@/lib/utils';
 import { Search } from 'lucide-react';
 import React from 'react'

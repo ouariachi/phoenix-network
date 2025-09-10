@@ -70,14 +70,16 @@ export const Navbar = ({ searchBar, onSearch }: NavbarProps) => {
         </div>
       </div>
 
-      <div
-        className={cn(
-          "h-0 overflow-hidden transition-all duration-300 ease-in-out pt-3 px-10",
-          searchBar && "h-14 xl:h-0 xl:opacity-0"
-        )}
-      >
-        <SearchBar className="" onSearch={onSearch} />
-      </div>
+      {searchBar &&
+        <div
+          className={cn(
+            "h-0 overflow-hidden transition-all duration-300 ease-in-out pt-3 px-10",
+            "h-14 xl:h-0 xl:opacity-0"
+          )}
+        >
+          <SearchBar className="" onSearch={onSearch} />
+        </div>
+      }
     </nav>
   )
 }
