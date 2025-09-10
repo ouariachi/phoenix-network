@@ -74,7 +74,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" className="select-none min-h-[100dvh]">
+    <section id="hero" className="select-none min-h-[100dvh] md:min-h-[calc(100dvh-60px)]">
       <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-20 blur-xs grayscale-25">
         <Image
           src="/hero.jpeg"
